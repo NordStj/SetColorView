@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum ColorLabel {
+    case red
+    case green
+    case blue
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet var redSlider: UISlider!
@@ -22,20 +28,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewColor.layer.cornerRadius = 10
+        setLabelValue(.red)
+        setLabelValue(.green)
+        setLabelValue(.blue)
     }
 
     @IBAction func redSliderAction() {
-        redLabel.text = String(format: "red: %.2f", redSlider.value)
+        setLabelValue(.red)
         updateRGB()
     }
     
     @IBAction func blueSliderAction() {
-        blueLabel.text = String(format: "blue: %.2f", blueSlider.value)
+        setLabelValue(.blue)
         updateRGB()
     }
     
     @IBAction func greenSliderAction() {
-        greenLabel.text = String(format: "green: %.2f", greenSlider.value)
+        setLabelValue(.green)
         updateRGB()
     }
     
@@ -47,6 +56,18 @@ class ViewController: UIViewController {
             alpha: 1.0)
         viewColor.backgroundColor = updateColor
         viewColor.setNeedsDisplay()
+    }
+    
+    func setLabelValue(_ color: ColorLabel) {
+        switch color {
+        case .red:
+            redLabel.text = String(format: "red: %.2f", redSlider.value)
+        case .green:
+            greenLabel.text = String(format: "green: %.2f", greenSlider.value)
+        case .blue:
+            blueLabel.text = String(format: "blue: %.2f", blueSlider.value)
+        }
+        
     }
 }
 
