@@ -33,10 +33,12 @@ class ViewController: UIViewController {
         blueLabel.text = String(format: "blue: %.2f", blueSlider.value)
         updateRGB()
     }
+    
     @IBAction func greenSliderAction() {
         greenLabel.text = String(format: "green: %.2f", greenSlider.value)
         updateRGB()
     }
+    
     func updateRGB() {
         let updateColor = UIColor(
             red: CGFloat(redSlider.value),
