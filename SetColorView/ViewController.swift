@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         updateRGB()
     }
     
-    func updateRGB() {
+    private func updateRGB() {
         viewColor.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
             green: CGFloat(greenSlider.value),
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
             alpha: 1.0)
     }
     
-    func setLabelValue(_ color: ColorLabel) {
+    private func setLabelValue(_ color: ColorLabel) {
         switch color {
         case .red:
             redLabel.text = String(format: "red: %.2f", redSlider.value)
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func setLabelValue() {
+    private func setLabelValue() {
         redLabel.text = String(format: "red: %.2f", redSlider.value)
         greenLabel.text = String(format: "green: %.2f", greenSlider.value)
         blueLabel.text = String(format: "blue: %.2f", blueSlider.value)
