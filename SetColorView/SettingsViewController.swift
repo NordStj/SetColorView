@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SettingsViewController.swift
 //  SetColorView
 //
 //  Created by Дмитрий on 05.05.2023.
@@ -13,7 +13,7 @@ enum ColorLabel {
     case blue
 }
 
-class ViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
     @IBOutlet var redSlider: UISlider!
     @IBOutlet var greenSlider: UISlider!
@@ -57,11 +57,11 @@ class ViewController: UIViewController {
     private func setLabelValue(_ color: ColorLabel) {
         switch color {
         case .red:
-            redLabel.text = String(format: "red: %.2f", redSlider.value)
+            redLabel.text = String(redSlider.value)
         case .green:
-            greenLabel.text = String(format: "green: %.2f", greenSlider.value)
+            greenLabel.text = String(greenSlider.value)
         case .blue:
-            blueLabel.text = String(format: "blue: %.2f", blueSlider.value)
+            blueLabel.text = String(blueSlider.value)
         }
     }
     
