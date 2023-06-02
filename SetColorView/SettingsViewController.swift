@@ -27,7 +27,7 @@ class SettingsViewController: UIViewController {
     
     var backgroundColor: UIColor!
     unowned var delegate: SettingsViewControllerDelegate!
-    var oldValue: String
+    var oldValue: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +37,11 @@ class SettingsViewController: UIViewController {
         redTF.delegate = self
         greenTF.delegate = self
         blueTF.delegate = self
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super .touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
 
     @IBAction func sliderAction(_ sender: UISlider) {
