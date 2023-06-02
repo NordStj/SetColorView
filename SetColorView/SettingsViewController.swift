@@ -116,13 +116,36 @@ class SettingsViewController: UIViewController {
 extension SettingsViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         oldValue = textField.text ?? "0.0"
+        
     }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonTapped))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        toolbar.items = [flexibleSpace, doneButton]
+        textField.inputAccessoryView = toolbar
+        
+        return true
+    }
+    
+    @objc func doneButtonTapped() {
+        view.endEditing(true)
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let newValue = textField.text else { return }
         guard let numberValue = Float(newValue) else {
             showAlert(addMessage: "Please, enter correct value")
             textField.text = oldValue
             return
+        }
+        guard numberValue > 0.0 && numberValue <= 1.0 else {
+                showAlert(addMessage: "Please, enter a value between 0.0 and 1.0")
+                textField.text = oldValue
+                return
         }
         switch textField {
         case redTF:
