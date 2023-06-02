@@ -27,6 +27,7 @@ class SettingsViewController: UIViewController {
     
     var backgroundColor: UIColor!
     unowned var delegate: SettingsViewControllerDelegate!
+    var oldValue: String
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,24 @@ class SettingsViewController: UIViewController {
     }
     
     private func setValue() {
+        setSliders()
+        setLabel()
+        setTextFild()
+    }
+    
+    private func setLabel() {
+        redLabel.text = String(format: "%.2f", redSlider.value)
+        greenLabel.text = String(format: "%.2f", greenSlider.value)
+        blueLabel.text = String(format: "%.2f", blueSlider.value)
+    }
+    
+    private func setTextFild() {
+        redTF.text = redLabel.text
+        greenTF.text = greenLabel.text
+        blueTF.text = blueLabel.text
+    }
+    
+    private func setSliders() {
         if let components = viewColor.backgroundColor?.cgColor.components {
             if components.count >= 3 {
                 redSlider.value = Float(components[0])
@@ -79,21 +98,27 @@ class SettingsViewController: UIViewController {
                 return
             }
         }
-        redLabel.text = String(format: "%.2f", redSlider.value)
-        greenLabel.text = String(format: "%.2f", greenSlider.value)
-        blueLabel.text = String(format: "%.2f", blueSlider.value)
-        
-        redTF.text = redLabel.text
-        greenTF.text = greenLabel.text
-        blueTF.text = blueLabel.text
     }
     
+    private func showAlert(addMessage message: String) {
+        let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
 }
 
 extension SettingsViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        oldValue = textField.text ?? "0.0"
+    }
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let newValue = textField.text else { return }
-        guard let numberValue = Float(newValue) else { return }
+        guard let numberValue = Float(newValue) else {
+            showAlert(addMessage: "Please, enter correct value")
+            textField.text = oldValue
+            return
+        }
         switch textField {
         case redTF:
             redSlider.value = numberValue
@@ -107,7 +132,6 @@ extension SettingsViewController: UITextFieldDelegate {
         default:
             return
         }
-        
     }
 }
 
