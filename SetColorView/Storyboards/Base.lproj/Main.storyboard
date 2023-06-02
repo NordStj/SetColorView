@@ -96,6 +96,9 @@
                                         <subviews>
                                             <slider opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hQS-5r-LQq">
                                                 <rect key="frame" x="-2" y="0.0" width="196.5" height="33"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="192.5" id="BWY-Z6-UAA"/>
+                                                </constraints>
                                                 <color key="minimumTrackTintColor" systemColor="systemRedColor"/>
                                                 <connections>
                                                     <action selector="sliderAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="kru-DA-puy"/>
@@ -151,9 +154,8 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZL-lN-dHy">
-                                <rect key="frame" x="155" y="498" width="65" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CZL-lN-dHy">
+                                <rect key="frame" x="155.5" y="498.5" width="64.5" height="34.5"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Done"/>
                                 <connections>
@@ -164,7 +166,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CZL-lN-dHy" secondAttribute="bottom" constant="134" id="CRP-aN-5rY"/>
                             <constraint firstItem="GqI-9e-c5r" firstAttribute="top" secondItem="6ii-HV-dgN" secondAttribute="bottom" constant="44.5" id="KfE-L8-mH9"/>
+                            <constraint firstItem="CZL-lN-dHy" firstAttribute="centerX" secondItem="GqI-9e-c5r" secondAttribute="centerX" id="L1p-jE-RXm"/>
                             <constraint firstItem="6ii-HV-dgN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="Z5z-zn-5yw"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6ii-HV-dgN" secondAttribute="trailing" constant="16" id="crZ-LR-ifa"/>
                             <constraint firstItem="qLn-QF-cTY" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.117333" id="fdG-qu-aDw"/>
